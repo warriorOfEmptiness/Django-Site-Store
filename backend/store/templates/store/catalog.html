@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>catalog</title>
-</head>
-<body>
-    {%for prod in product%}
-    <h1>{{prod.name}}</h1>
-    {%endfor%}
-</body>
-</html>
+{% extends 'store/base.html' %}
+{% load static %}
+{%block style%}
+    <link rel="stylesheet" href="{% static 'style/catalog.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="container product-list">
+        {% for prod in product %}
+            <div class="product-card">
+                {% if prod.image %}
+                    <img src="{{prod.image.url}}" alt="{{ prod.name }}" class="product-image">
+                {% endif %}
+                <div class="product-info">
+                    <h2 class="product-name">{{ prod.name }}</h2>
+                    <p class="product-description">{{ prod.dsc }}</p>
+                    <p class="product-price">{{ prod.price }} руб.</p>
+                    <a href="#" class="product-button">Подробнее</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
