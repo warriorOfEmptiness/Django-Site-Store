@@ -108,8 +108,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+STATIC_URL = '/static/'  # URL для доступа к статическим файлам (например, /static/css/style.css)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Путь к директории со статическими файлами вашего проекта (необязательно, но рекомендуется)
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Директория, куда собираются статические файлы при деплое (для production)
 
-STATIC_URL = 'static/'
+# MEDIA files (user uploaded files)
+# https://docs.djangoproject.com/en/4.2/topics/files/
+
+MEDIA_URL = '/media/'  # URL для доступа к медиа-файлам (например, /media/uploads/image.jpg)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Директория, где будут храниться загруженные файлы (обязательно)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
